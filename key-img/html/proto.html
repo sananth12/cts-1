@@ -1,0 +1,76 @@
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		html{
+			width: 100%;
+		}
+
+		body{
+			margin: auto;
+			width: 750px;
+		}
+		div#container{
+			width: 750px;
+			margin: auto;
+		}
+
+		div{
+			float: left;
+			width: 150px;
+			height: 150px;
+			background: gray;
+			box-shadow: inset 0px 0px 1px white;
+		}
+
+		div:hover{
+			box-shadow: inset 0px 0px 1px red;
+		}
+
+		div#clear{
+			clear: both;
+			display: none;
+		}
+
+
+		img{
+			display: none;
+		}
+	</style>
+</head>
+<body>
+<div id="container">
+	<div id='0'> <img src='splits/0.jpg'></div>
+	<div id='1'> <img src='splits/1.jpg'></div>
+	<div id='2'> <img src='splits/2.jpg'></div>
+	<div id='3'> <img src='splits/3.jpg'></div>
+	<div id='4'> <img src='splits/4.jpg'></div>
+	<div id='5'> <img src='splits/5.jpg'></div>
+	<div id='6'> <img src='splits/6.jpg'></div>
+	<div id='7'> <img src='splits/7.jpg'></div>
+	<div id='8'> <img src='splits/8.jpg'></div>
+	<div id='9'> <img src='splits/9.jpg'></div>
+	<div id='10'> <img src='splits/10.jpg'></div>
+	<div id='11'> <img src='splits/11.jpg'></div>
+	<div id='12'> <img src='splits/12.jpg'></div>
+	<div id='13'> <img src='splits/13.jpg'></div>
+	<div id='14'> <img src='splits/14.jpg'></div>
+	<div id='15'> <img src='splits/15.jpg'></div>
+	<div id='16'> <img src='splits/16.jpg'></div>
+	<div id='17'> <img src='splits/17.jpg'></div>
+	<div id='18'> <img src='splits/18.jpg'></div>
+	<div id='19'> <img src='splits/19.jpg'></div>
+	<div id="clear"></div>
+</div>
+<script type="text/javascript">
+	var d = document.getElementsByTagName('div');
+	for(var i =0; i<d.length; i++){
+		d[i].onclick = function(e){
+			console.log(this.childNodes);
+			this.childNodes[1].style.display = "block";
+			//alert();
+		};
+	}
+</script>
+</body>
+</html>
