@@ -1,0 +1,27 @@
+div.play-cont{
+  width:750px;
+  float:left;
+}
+div.play{
+    float:left;
+    width:150px;
+    height:150px;
+    background:gray;
+    box-shadow: inset 0px 0px 1px white;
+}
+
+div.play:hover{
+    box-shadow: inset 0px 0px 1px red;
+}
+
+div.clear{
+    clear:none;
+}
+div.q-area{
+    padding:10px;
+}
+
+div.q-area p{
+    position:relative;
+    left:100px;
+}

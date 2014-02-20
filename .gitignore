@@ -3,3 +3,5 @@ questions_vivek.txt
 *.pyc
 *.db
 *.jpg
+server/config.py
+*.db

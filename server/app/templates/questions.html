@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Add your Questions</h1>
+<form action="" method="post" name="set_question">
+    {{form.hidden_tag()}}
+     <p>
+        Please Enter Your Question Here:<br>
+        {{form.question}}<br>
+    </p>
+    {% for error in form.errors.question %}
+        <span style="color:red;">[-]&nbsp;{{error}}</span>
+    {% endfor %}
+
+    <p>
+        Please Enter Your Answer Here:<br>
+        {{form.answer}}<br>
+    </p>
+    {% for error in form.errors.answer %}
+        <span style="color:red;">[-]&nbsp;{{error}}</span>
+    {% endfor %}
+
+
+
+    <p><input type="submit" value="Submit"></p>
+</form>
+
+<a href="/rules"> read the rules here </a>
+{% endblock %}
+
+    

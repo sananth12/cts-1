@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="play-cont">
+  <div class="play" id="0"></div>
+  <div class="play" id="1"></div>
+  <div class="play" id="2"></div>
+  <div class="play" id="3"></div>
+  <div class="play" id="4"></div>
+  <div class="play" id="5"></div>
+  <div class="play" id="6"></div>
+  <div class="play" id="7"></div>
+  <div class="play" id="8"></div>
+  <div class="play" id="9"></div>
+  <div class="play" id="10"></div>
+  <div class="play" id="11"></div>
+  <div class="play" id="12"></div>
+  <div class="play" id="13"></div>
+  <div class="play" id="14"></div>
+  <div class="play" id="15"></div>
+  <div class="play" id="16"></div>
+  <div class="play" id="17"></div>
+  <div class="play" id="18"></div>
+  <div class="play" id="19"></div>
+</div>
+<div class="clear"></div>
+<div class="q-area">
+    <p id="q"></p>
+</div>
+<script>
+    $(document).ready(function(){
+        $("div.play").click(function(){
+            $(this).css("background-color", "red");
+            d = {
+                "id": this.id
+            };
+            $.ajax({
+                type: "POST"
+                ,url: "/get_q"
+                ,data: JSON.stringify(d)
+                ,contentType: 'application/json;charset=UTF-8'
+                ,success: function(result){
+                    result = $.parseJSON(result);
+                    $("div.q-area").css("background-color" , "yellow");
+                    var html = "<h1>"+result.q+"</h1>";
+                    html += "<input type=text id=ans>";
+                    html += "<button onclick=submit_ans();>submit</button>";
+                    $("p#q").html(html);
+
+
+                    setTimeout(function(){
+                        $("div.q-area").css("background-color" , "white");
+                    },500);
+                    console.log(result);
+                }
+            });
+        });
+    });
+    function submit_ans(){
+            alert($("input#ans").val());
+    }
+
+</script>
+{% endblock %}
