@@ -1,4 +1,7 @@
 import json
+import shutil
+import os
+from config import basedir
 from random import randint
 from flask import render_template, flash, redirect, request
 from app import app, db
@@ -37,8 +40,30 @@ def get_q():
         q = Q_MOD.query.get(randint(1,l))
         obj = {}
         obj["q"] = q.question
-        obj["a"] = q.answer
+        obj["qid"] = q.id
         obj["r"] = request.json
         return json.dumps(obj)
 
     return "did not implement this....?"
+
+
+@app.route('/validate' , methods = ['POST'])
+def validate():
+    if request.method == "POST":
+        obj = {}
+        obj["r"] = request.json
+        q = Q_MOD.query.get(int(obj["r"]["qid"]));
+        ans = {}
+        ans["id"] = obj["r"]["did"]
+        if q.answer == obj["r"]["ans"]:
+            src = os.path.join(basedir, "private/11111/splits")
+            dst = os.path.join(basedir, "app/static")
+            src += "/"+str(ans["id"])+".jpg"
+            dst += "/"+str(ans["id"])+".jpg"
+            shutil.copyfile(src,dst)
+            ans["status"] = "success"
+            ans["url"] = "/static/"+str(ans["id"])+".jpg"
+        else:
+            ans["status"] = "failure"
+
+        return json.dumps(ans)

@@ -29,7 +29,6 @@
 <script>
     $(document).ready(function(){
         $("div.play").click(function(){
-            $(this).css("background-color", "red");
             d = {
                 "id": this.id
             };
@@ -42,11 +41,9 @@
                     result = $.parseJSON(result);
                     $("div.q-area").css("background-color" , "yellow");
                     var html = "<h1>"+result.q+"</h1>";
-                    html += "<input type=text id=ans>";
+                    html += "<input type=text class=ans  id="+result.qid+" data-did="+result.r.id+">";
                     html += "<button onclick=submit_ans();>submit</button>";
                     $("p#q").html(html);
-
-
                     setTimeout(function(){
                         $("div.q-area").css("background-color" , "white");
                     },500);
@@ -56,7 +53,30 @@
         });
     });
     function submit_ans(){
-            alert($("input#ans").val());
+        var d = {};
+        d.ans = $("input.ans").val();
+        d.qid = $("input.ans")[0].id;
+        d.did = $("input.ans").data().did;
+
+        $.ajax({
+            type: "POST"
+            ,url: "/validate"
+            ,data: JSON.stringify(d)
+            ,contentType: "application/json"
+            ,success: function(result){
+                result = $.parseJSON(result);
+                console.log(result);
+                if(result.status == "success")
+                    $("div#"+result.id).html("<img src="+result.url+">");
+                else{
+                    $("div.q-area").css("background-color" , "red");
+                    setTimeout(function(){
+                        $("div.q-area").css("background-color" , "white");
+                    },500);
+                }
+                    
+            }
+        });
     }
 
 </script>
