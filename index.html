@@ -1,0 +1,123 @@
+<!doctype html>
+<html>
+  <head>
+    
+    <link rel="stylesheet" type="text/css" href="css/style.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="css/win8.css" media="all" />   
+    <script src="js/jquery.js"> </script>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script src="js/bootstrap.min.js"></script>
+    <script>
+    var q_no=0;
+    var x=0;
+    $(document).ready(function () {
+  
+       $("input#submit").click(function(){
+         $.ajax({
+          /* type: "POST",
+           url: "process.php",
+           data: $('form.contact').serialize(),
+           success: function(msg){
+             //alert(msg);
+             msg=JSON.parse(msg);
+            // console.log(msg);
+             
+             if(msg['status']=='0')
+                alert("Wrong Answer!!");
+              if(msg['status']=='1')
+              {
+                str=msg['url'];
+                x++;
+              document.getElementById(q_no).style.backgroundImage = 'url(' + str +')';
+            // document.getElementById(q_no).style.borderWidth=0;
+
+              }
+             $("#form-content").modal('hide'); 
+
+          },
+          error: function(){
+             alert("failure");*/
+           }
+         });
+       });
+     });
+    function load(t)
+    {
+        /* $("input#qid").val(t);
+         data= {q_no:t};
+         q_no=t;
+         $.ajax({
+          type: "POST",
+          url: "question.php",
+          data: data,
+          success: function(msg){
+         //   alert(msg);
+            $("p#qus").text(msg);
+          },
+          error: function(){
+            alert("failure");
+          }
+        });*/
+
+    }
+    if(x==20)
+    {
+      document.getElementById(j).style.borderWidth=0;
+    }
+    </script>
+  
+  </head>
+  <body>
+
+
+<div class="metro-surface">
+ <table cellspacing="0" cellpadding="0">
+  <tr>
+   <td><a data-toggle="modal" href="#form-content" onclick='load(1)'><div class="metro-tile  " id="1" > </div></a></td>
+  <td><a data-toggle="modal" href="#form-content" onclick='load(2)'><div class="metro-tile  " id="2" > </div></a></td>
+   <td><a data-toggle="modal" href="#form-content" onclick='load(3)' ><div class="metro-tile  " id="3" > </div></a></td>
+   <td><a data-toggle="modal" href="#form-content" onclick='load(4)'><div class="metro-tile  " id="4" > </div></a></td>
+   <td><a data-toggle="modal" href="#form-content" onclick='load(5)'><div class="metro-tile  " id="5" > </div></a></td>
+  </tr>
+ 
+  <tr>
+   <td><a data-toggle="modal" href="#form-content" onclick='load(6)'><div class="metro-tile  " id="6" > </div></a></td>
+  <td><a data-toggle="modal" href="#form-content" onclick='load(7)'><div class="metro-tile  " id="7" > </div></a></td>
+   <td><a data-toggle="modal" href="#form-content" onclick='load(8)'><div class="metro-tile  " id="8" > </div></a></td>
+   <td><a data-toggle="modal" href="#form-content" onclick='load(9)'><div class="metro-tile  " id="9" > </div></a></td>
+   <td><a data-toggle="modal" href="#form-content" onclick='load(10)'><div class="metro-tile  " id="10" > </div></a></td>
+  </tr>
+  
+  <tr>
+    <td><a data-toggle="modal" href="#form-content" onclick='load(11)'><div class="metro-tile  " id="11" > </div></a></td>
+  <td><a data-toggle="modal" href="#form-content" onclick='load(12)'><div class="metro-tile  " id="12" > </div></a></td>
+   <td><a data-toggle="modal" href="#form-content" onclick='load(13)'><div class="metro-tile  " id="13" > </div></a></td>
+   <td><a data-toggle="modal" href="#form-content" onclick='load(14)'><div class="metro-tile  " id="14" > </div></a></td>
+   <td><a data-toggle="modal" href="#form-content" onclick='load(15)'><div class="metro-tile  " id="15" > </div></a></td>
+ </tr>
+
+ </table>
+  
+</div>
+
+  
+    <div id="form-content" class="modal hide fade in" style="display: none;">
+        <div class="modal-body">
+        
+          <label class="label" for="qus">Question</label><br>
+          <p name="qus" id="qus"></p><br>
+          <form class="contact" name="contact">
+          <input name="qid" id="qid" value="" type="hidden"/>   
+          <label class="label" for="ans">Answer</label><br>
+          <input type="file" name="ans" id="ans" class="input-xlarge"><br>
+          
+        </form>
+      </div>
+      <div class="modal-footer">
+        <input class="btn btn-success" type="submit" value="Submit" id="submit">
+        <a href="#" class="btn" data-dismiss="modal">Cancel</a>
+      </div>
+    </div>
+    
+</body>
+</html>

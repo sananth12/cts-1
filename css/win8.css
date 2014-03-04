@@ -1,0 +1,33 @@
+
+body {
+	background: url(Background.jpg);
+	background-color:58169;
+	width: 100%; height: 100%; margin: 0px; padding: 0px; 
+}
+
+
+.metro-surface{
+	padding: 0px 0px 0px 0px;
+	margin-left: -400px;
+    width: 660px;
+    height: 452px;
+    position: absolute;
+    /*left: 22%;*/
+    top :15%;
+    left: 50%;
+
+}
+
+.metro-tile {
+	float: left;
+			width: 150px;
+			height: 150px;
+			background: gray;
+			box-shadow: inset 0px 0px 1px white;
+}
+
+
+div:hover{
+			box-shadow: inset 0px 0px 3px #CC33FF;
+		}
+
